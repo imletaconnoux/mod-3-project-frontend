@@ -19,6 +19,7 @@ class ProductsAdapter {
   //   return fetch(deleteUrl, productDeleteParams).then(response => response.json())
   // }
 
+  // this will only be used if we have a product create form
   createProduct(body) {
     const productCreateParams = {
       method: 'POST',
