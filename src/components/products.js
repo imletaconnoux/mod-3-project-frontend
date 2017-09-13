@@ -8,7 +8,7 @@ class Products {
 
   initBindingsAndEventListeners() {
     this.searchInput = document.getElementById("find-product-input")
-    this.searchInput.addEventListener("keyup", function(event){console.log(event.target.value)})
+    this.searchInput.addEventListener("keyup", this.handleSearch.bind(this))
     // this.productsForm = document.getElementById('new-product-form')
     // this.productInput = document.getElementById('new-product-body')
     // this.productsNode = document.getElementById('products-container')
@@ -29,8 +29,21 @@ class Products {
   handleSearch() {
     event.preventDefault()
     let searchTerm = event.target.value
-    console.log(this.findProducts(searchTerm)) // define on class
+    this.findProducts(searchTerm)
+    // console.log(this.findProducts(searchTerm)) // define on class
 
+  }
+
+
+  findProducts(searchTerm){
+    let foundProducts = this.products.filter((product) => {
+      if (product.name.includes(searchTerm)) {
+        return product
+      }
+    })
+
+    console.log(foundProducts)
+    console.log(this.products)
   }
 
   // handleAddProduct() {
@@ -63,12 +76,5 @@ class Products {
     this.productsNode.innerHTML = `<ul>${this.productsHTML()}</ul>`
   }
 
-  findProducts(searchTerm){
-    this.products.filter((searchTerm) => {
-      if (foundProducts = product.name.includes(searchTerm)) {
-        return product
-      }
-    })
-  }
 
 }
