@@ -1,6 +1,14 @@
 class Product {
   constructor(productJSON) {
-    this.body = productJSON.body
+    this.name = productJSON.name
+    this.availableOnline = productJSON.available_online
+    this.salePrice = productJSON.sale_price
+    this.shortDescription = productJSON.short_description
+    this.thumbnailImage = productJSON.thumbnail_image
+    this.stock = productJSON.stock
+    this.addToCartUrl = productJSON.add_to_cart
+    this.itemId = productJSON.item_id
+    this.listId = productJSON.list_id
     this.id = productJSON.id
   }
 
