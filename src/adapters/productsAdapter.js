@@ -7,18 +7,6 @@ class ProductsAdapter {
     return fetch(this.baseUrl).then(response => response.json())
   }
 
-//rails api not set up for delet yet
-  // deleteProduct(productId) {
-  //   const deleteUrl = `${this.baseUrl}/${productId}`
-  //   const productDeleteParams = {
-  //     method: 'DELETE',
-  //     headers: {
-  //       'Content-Type':'application/json'
-  //     }
-  //   }
-  //   return fetch(deleteUrl, productDeleteParams).then(response => response.json())
-  // }
-
   // this will only be used if we have a product create form
   createProduct(body) {
     const productCreateParams = {
