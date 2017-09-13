@@ -35,12 +35,16 @@ class Products {
   }
 
   findProducts(searchTerm){
-    let foundProducts = this.products.filter((product) => {
-      if (product.name.toLowerCase().includes(searchTerm)) {
-        return product
-      }
-    })
-    this.render(foundProducts)
+    if (!searchTerm){
+      this.productsNode.innerHTML = ""
+    } else {
+      let foundProducts = this.products.filter((product) => {
+        if (product.name.toLowerCase().includes(searchTerm)) {
+          return product
+        }
+      })
+      this.render(foundProducts)
+    }
   }
 
   handleDeleteProduct() {
@@ -56,7 +60,7 @@ class Products {
     this.render()
   }
 
-  productsHTML(foundProducts) {    
+  productsHTML(foundProducts) {
     return foundProducts.map( product => product.render() ).join('')
   }
 
@@ -70,9 +74,12 @@ class Products {
       let productToAdd = this.products.find((product) => {
         return product.id === parseInt(productId)
       })
-      
+
       app.lists.lists[0].products.push(productToAdd)
-      console.log(app.lists.lists[0].products)
+
+      app.lists.adapter.addProduct(productToAdd, app.lists.lists[0].id)
+      app.lists.render()
+      // console.log(app.lists.lists[0].products)
     }
   }
 

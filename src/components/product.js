@@ -15,4 +15,8 @@ class Product {
   render() {
     return `<li data-productid='${this.id}' data-props='${JSON.stringify(this)}' class='product-element'>${this.name} <button class="add-to-list">Add to List</button></li>`
   }
+
+  renderOnList() {
+    return `<li data-productid='${this.id}' data-props='${JSON.stringify(this)}' class='product-element'>${this.name} <button class="remove-product">Remove From List</button></li>`
+  }
 }
