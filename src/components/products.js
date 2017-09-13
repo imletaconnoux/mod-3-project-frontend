@@ -34,7 +34,6 @@ class Products {
 
   }
 
-
   findProducts(searchTerm){
     let foundProducts = this.products.filter((product) => {
       if (product.name.toLowerCase().includes(searchTerm)) {
