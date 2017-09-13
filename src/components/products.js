@@ -71,7 +71,9 @@ class Products {
       let productToAdd = this.products.find((product) => {
         return product.id === parseInt(productId)
       })
-      // store productToAdd in backend list
+      
+      app.lists.lists[0].products.push(productToAdd)
+      console.log(app.lists.lists[0].products)
     }
   }
 
