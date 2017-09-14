@@ -60,12 +60,16 @@ class Products {
     if (event.target.dataset.name === "add-to-list") {
       this.addProductToList()
     } else if (event.target.className === "content") {
-      let elementToChange = event.target
-      let productDetails = this.products.find((product) => {
-        return product.id === parseInt(event.target.dataset.id)
-      })
-      console.log(productDetails)
-      elementToChange.innerHTML = productDetails.renderFullInfo()
+      let elementToChange = event.target.childNodes[1]
+      if (event.target.innerHTML.includes("Price")){
+        elementToChange = event.target.parentElement
+        elementToChange.innerHTML = `<div class="product-details" data-productdetailsid="${this.id}"></div>`
+      } else {
+        let productDetails = this.products.find((product) => {
+          return product.id === parseInt(event.target.dataset.id)
+        })
+        elementToChange.innerHTML = productDetails.renderFullInfo()
+      }
     }
   }
 

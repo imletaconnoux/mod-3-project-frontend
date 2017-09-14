@@ -26,17 +26,18 @@ class Product {
         <button class="ui button tiny" data-name="add-to-list">Add to List</button>
       </div>
       <img class="ui avatar image" src="${this.thumbnailImage}">
-      <div class="content" data-id="${this.id}">${this.name}</div>
-    </div>`
+      <div class="content" data-id="${this.id}">${this.name}
+        <div class="product-details" data-productdetailsid="${this.id}"></div>
+        </div>
+      </div>`
   }
 
   renderFullInfo() {
     return `
     <div class="item">
-      <div class="right floated content"data-productid='${this.id}' data-props='${JSON.stringify(this)}' data-name='product-element'>
+      <div class="right floated content" data-productid='${this.id}' data-props='${JSON.stringify(this)}' data-name='product-element'>
       </div>
-      <div class="content">
-        ${this.name}<br>
+      <div data-productid="${this.id}" class="content">
         ${this.available()}<br>
         Price: $${this.salePrice} <br><a target="_blank" href="${this.addToCartUrl}">Buy On Walmart.com</a><br>
       </div>
