@@ -37,7 +37,7 @@ class Lists {
   }
 
   deleteProduct(event){
-    if (event.target.className === "remove-product"){
+    if (event.target.dataset.name === "remove-product"){
       let elementToRemove = event.target.parentElement
       let productId = parseInt(elementToRemove.dataset.productid)
       app.lists.adapter.deleteFromDb(productId, app.lists.lists[0].id)

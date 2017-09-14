@@ -47,7 +47,7 @@ class Products {
   }
 
   addProductToList() {
-    if (event.target.className === "add-to-list") { // need to add dataset.name and check event.target.dataset.name vs the element data-name
+    if (event.target.dataset.name === "add-to-list") {
       let productId = event.target.parentElement.dataset.productid
       let productToAdd = this.products.find((product) => {
         return product.id === parseInt(productId)
