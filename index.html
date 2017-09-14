@@ -11,18 +11,24 @@
 
   </head>
   <body>
-    <div class="two wide column" id="container">
-      <div id="find-product-container">
-        <form id="find-product-form">
-          <label>Search for a product:</label>
-          <input type="text" name="product-body" id="find-product-input">
-        </form>
+    <div class ="ui menu">
+      <div class="header item">
+      <i class="very big shop icon"></i>
+      <font size="6" face="trebuchet ms" color="blue">Product Tracker</font>
       </div>
+      <div class="header item">
+        <div class="ui search" id="find-product-container">
+          <form id="find-product-form">
+            <input type="text" name="product-body" id="find-product-input" placeholder="Search for a Product">
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="two wide column" id="container" style="padding-left: 5%;padding-right: 5%">
       <div id="filtered-products-container">
-
       </div>
       <div id="user-list-heading">
-        <h2>Saved Products<h2>
+        <h2 class="ui blue header" style="padding-top:5%">Saved Products:<h2>
       </div>
       <!-- UL Placeholder -->
       <div id="user-list">

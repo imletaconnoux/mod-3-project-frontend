@@ -43,7 +43,7 @@ class Products {
   }
 
   render(foundProducts) {
-    this.productsNode.innerHTML = `<div class="ui middle aligned divided list">${this.productsHTML(foundProducts)}</div>`
+    this.productsNode.innerHTML = `<div class="ui middle aligned divided list"><h2 class="ui blue header">Search Results: </h2>${this.productsHTML(foundProducts)}</div>`
   }
 
   addProductToList() {
