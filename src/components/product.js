@@ -14,7 +14,7 @@ class Product {
       if (this.availableOnline === true) {
         return "Available Online"
       } else {
-        return "Not Availble"
+        return "Not Available"
       }
     }
   }
@@ -26,7 +26,7 @@ class Product {
         <button class="ui button tiny" data-name="add-to-list">Add to List</button>
       </div>
       <img class="ui avatar image" src="${this.thumbnailImage}">
-      <div class="content">${this.name}</div>
+      <div class="content" data-id="${this.id}">${this.name}</div>
     </div>`
   }
 
@@ -34,13 +34,11 @@ class Product {
     return `
     <div class="item">
       <div class="right floated content"data-productid='${this.id}' data-props='${JSON.stringify(this)}' data-name='product-element'>
-        <button class="ui button tiny" data-name="add-to-list">Add to List</button>
       </div>
-      <img class="ui avatar image" src="${this.thumbnailImage}">
       <div class="content">
         ${this.name}<br>
-        Available Online: ${this.availableOnline}<br>
-        Price: $${this.salePrice} <br><a href="${this.addToCartUrl}">Buy On Walmart.com</a><br>
+        ${this.available()}<br>
+        Price: $${this.salePrice} <br><a target="_blank" href="${this.addToCartUrl}">Buy On Walmart.com</a><br>
       </div>
     </div>`
   }
