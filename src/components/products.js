@@ -10,7 +10,7 @@ class Products {
     this.searchInput = document.getElementById("find-product-input")
     this.searchInput.addEventListener("input", this.handleSearch.bind(this))
     this.productsNode = document.getElementById('filtered-products-container')
-    this.productsNode.addEventListener('click', this.addProductToList.bind(this))
+    this.productsNode.addEventListener('click', this.handleContainerClick.bind(this))
   }
 
   fetchAndLoadProducts() {
@@ -43,19 +43,27 @@ class Products {
   }
 
   render(foundProducts) {
-    this.productsNode.innerHTML = `<ul>${this.productsHTML(foundProducts)}</ul>`
+    this.productsNode.innerHTML = `<div class="ui middle aligned divided list">${this.productsHTML(foundProducts)}</div>`
   }
 
   addProductToList() {
+    let productId = event.target.parentElement.dataset.productid
+    let productToAdd = this.products.find((product) => {
+      return product.id === parseInt(productId)
+    })
+    app.lists.lists[0].products.push(productToAdd)
+    app.lists.adapter.addProduct(productToAdd, app.lists.lists[0].id)
+    app.lists.render()
+  }
+
+  handleContainerClick() {
     if (event.target.dataset.name === "add-to-list") {
-      let productId = event.target.parentElement.dataset.productid
-      let productToAdd = this.products.find((product) => {
-        return product.id === parseInt(productId)
-      })
-      app.lists.lists[0].products.push(productToAdd)
-      app.lists.adapter.addProduct(productToAdd, app.lists.lists[0].id)
-      app.lists.render()
+      this.addProductToList()
+    } else if (event.target.className === "content") {
+        console.log(event.target.parentElement)
+        console.log(typeof event.target.parentElement)
     }
+    // productDetails.renderFullInfo()
   }
 
 }

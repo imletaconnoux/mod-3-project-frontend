@@ -9,6 +9,7 @@ class Lists {
   initBindingsAndEventListeners() {
     this.listsNode = document.getElementById("user-list")
     this.listsNode.addEventListener('click', this.deleteProduct.bind(this))
+    this.container = document.getElementById("filtered-products-container")
   }
 
   fetchAndLoadLists() {
@@ -29,7 +30,7 @@ class Lists {
   }
 
   render(){
-    this.listsNode.innerHTML = `<ul>${this.listsHTML()}</ul>`
+    this.listsNode.innerHTML = `<div class="ui middle aligned divided list">${this.listsHTML()}</div>`
   }
 
   listsHTML(){
@@ -38,11 +39,11 @@ class Lists {
 
   deleteProduct(event){
     if (event.target.dataset.name === "remove-product"){
-      let elementToRemove = event.target.parentElement
-      let productId = parseInt(elementToRemove.dataset.productid)
+      let productToRemove = event.target.parentElement
+      let elementToRemove = event.target.parentElement.parentElement
+      let productId = parseInt(productToRemove.dataset.productid)
       app.lists.adapter.deleteFromDb(productId, app.lists.lists[0].id)
       elementToRemove.remove()
     }
   }
-
 }
