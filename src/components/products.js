@@ -59,14 +59,13 @@ class Products {
   handleContainerClick() {
     if (event.target.dataset.name === "add-to-list") {
       this.addProductToList()
-    } else if (event.target.className === "content") {
-      let elementToChange = event.target.childNodes[1]
-      if (event.target.innerHTML.includes("Price")){
-        elementToChange = event.target.parentElement
+    } else if (event.target.className === "add circle icon") {
+      let elementToChange = event.target.parentElement.childNodes[3]
+      if (elementToChange.innerHTML.includes("Price")){
         elementToChange.innerHTML = `<div class="product-details" data-productdetailsid="${this.id}"></div>`
       } else {
         let productDetails = this.products.find((product) => {
-          return product.id === parseInt(event.target.dataset.id)
+          return product.id === parseInt(event.target.parentElement.dataset.id)
         })
         elementToChange.innerHTML = productDetails.renderFullInfo()
       }
