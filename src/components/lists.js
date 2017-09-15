@@ -41,12 +41,15 @@ class Lists {
     if (event.target.dataset.name === "remove-product"){
       let productToRemove = event.target.parentElement
       let elementToRemove = event.target.parentElement.parentElement
-      let jsObject = app.lists.lists[0].products.indexOf(productToRemove)
       let productId = parseInt(productToRemove.dataset.productid)
+      let jsObject = app.lists.lists[0].products.find(product => product.id === productId)
+      let index = app.lists.lists[0].products.indexOf(jsObject)
+      debugger
       app.lists.adapter.deleteFromDb(productId, app.lists.lists[0].id) // deletes from backend
       elementToRemove.remove() // deletes from html
-      app.lists.lists[0].products.splice(jsObject, 1) // delete from FE i hope
+      app.lists.lists[0].products.splice(index, 1) // delete from FE i hope
     }
+    // this.render()
   }
 
     handleListsClick() {
@@ -66,28 +69,3 @@ class Lists {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

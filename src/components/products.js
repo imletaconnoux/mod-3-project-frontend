@@ -1,6 +1,6 @@
 class Products {
   constructor() {
-    this.products = [] 
+    this.products = []
     this.initBindingsAndEventListeners()
     this.adapter = new ProductsAdapter()
     this.fetchAndLoadProducts()
@@ -21,7 +21,7 @@ class Products {
 
   handleSearch() {
     event.preventDefault()
-    let searchTerm = event.target.value
+    let searchTerm = event.target.value.toLowerCase()
     this.findProducts(searchTerm)
   }
 
