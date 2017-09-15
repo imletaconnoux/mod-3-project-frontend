@@ -51,7 +51,9 @@ class Product {
         <button class="ui button tiny" data-name="remove-product">Remove From List</button>
       </div>
       <img class="ui avatar image" src="${this.thumbnailImage}">
-      <div class="content">${this.name}</div>
+      <div class="content">${this.name} <i class="add circle icon"></i>
+        <div class="product-details" data-productdetailsid="${this.id}"></div>
+      </div>
     </div>`
   }
 }

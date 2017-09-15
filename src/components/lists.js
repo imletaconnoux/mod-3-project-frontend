@@ -8,7 +8,7 @@ class Lists {
 
   initBindingsAndEventListeners() {
     this.listsNode = document.getElementById("user-list")
-    this.listsNode.addEventListener('click', this.deleteProduct.bind(this))
+    this.listsNode.addEventListener('click', this.handleListsClick.bind(this))
     this.container = document.getElementById("filtered-products-container")
   }
 
@@ -48,4 +48,46 @@ class Lists {
       app.lists.lists[0].products.splice(jsObject, 1) // delete from FE i hope
     }
   }
+
+    handleListsClick() {
+    if (event.target.dataset.name === "remove-product") {
+      this.deleteProduct(event)
+    } else if (event.target.className === "add circle icon") {
+
+      let elementToChange = event.target.parentElement.childNodes[3]
+      if (elementToChange.innerHTML.includes("Price")){
+        elementToChange.innerHTML = `<div class="product-details" data-productdetailsid="${this.id}"></div>`
+      } else {
+        let productDetails = this.lists[0].products.find((product) => {
+          return product.id === parseInt(event.target.parentElement.childNodes[3].dataset.productdetailsid)
+        })
+        elementToChange.innerHTML = productDetails.renderFullInfo()
+      }
+    }
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
